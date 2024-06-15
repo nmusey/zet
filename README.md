@@ -6,7 +6,7 @@ This is a tool for quickly working with zettelkasten notes from the command line
 
 ## Installation
 1. Ensure `go` is installed.
-2. `git clone https://github.com/nmusey/zet && cd zet && make build` to build the executable, then move it somewhere in your path.
+2. Either run `go install github.com/nmusey/zet`, or `git clone https://github.com/nmusey/zet && cd zet && make build` to build the executable, then move it somewhere in your path.
 3. Set the `ZET_NOTES_DIR` environment variable in you shell profile to where you store your notes.
 
 
