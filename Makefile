@@ -1,3 +1,3 @@
 build:
-	@go build -o zet cmd/main.go 
+	@go build -o zet main.go 
 	@chmod +x zet
