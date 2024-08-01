@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -45,14 +46,26 @@ func WriteNote(filename string, contents string) error {
 
 func ListNotes() error {
     noteDirName, err := getNoteDir()
-    dir, err := os.ReadDir(noteDirName)
     if err != nil {
         return err
     }
 
-    // TODO make this handle folders recursively
+    return listDirectory(noteDirName)
+}
+
+func listDirectory(path string) error {
+    dir, err := os.ReadDir(path)
+    if err != nil {
+        return err
+    }
+
     for _, file := range dir {
-        fmt.Println(file.Name())
+        if file.IsDir() {
+            dirpath := filepath.Join(path, file.Name())
+            listDirectory(dirpath)
+        } else {
+            fmt.Println(file.Name())
+        }
     }
 
     return nil
